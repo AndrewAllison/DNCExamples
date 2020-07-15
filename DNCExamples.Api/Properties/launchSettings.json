@@ -1,0 +1,47 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:1551",
+      "sslPort": 44356
+    }
+  },
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "(Development) DotNet Core": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "REACT_APP_LOOKUP_API_URL": "https://localhost:6002"
+      },
+      "applicationUrl": "https://localhost:6002"
+    },
+    "(Staging) DotNet Core": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Staging",
+        "REACT_APP_LOOKUP_API_URL": "https://localhost:6002"
+      },
+      "applicationUrl": "https://localhost:6002"
+    },
+    "(Production) DotNet Core": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production",
+        "REACT_APP_LOOKUP_API_URL": "https://localhost:6002"
+      },
+      "applicationUrl": "https://localhost:6002"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/weatherforecast",
+      "publishAllPorts": true,
+      "useSSL": true
+    }
+  }
+}
