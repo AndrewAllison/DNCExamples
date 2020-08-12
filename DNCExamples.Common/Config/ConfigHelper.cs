@@ -7,7 +7,9 @@ namespace DNCExamples.Common.Config
     /// </summary>
     public class ConfigHelper : IConfigHelper
     {
-
+        /// <summary>
+        /// Instance of the Configuration generated during instanciation.
+        /// </summary>
         public IConfiguration Configuration { get; set; }
 
         /// <summary>

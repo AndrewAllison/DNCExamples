@@ -1,12 +1,19 @@
-using System;
+using System; 
 using DNCExamples.Common.Config;
+using DNCExamples.Common.Logging;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace DNCExamples.Api
 {
-    public class Program
+    /// <summary>
+    /// Main Entry point for the application
+    /// </summary>
+    public static class Program
     {
+        private static ILogger<Startup> logger;
         /// <summary>
         /// Will create a host builder whilst adding some of the desired dependencies
         /// </summary>
@@ -22,6 +29,9 @@ namespace DNCExamples.Api
             AppSettings<Startup> appSettings = new AppSettings<Startup>(environmentHelper);
             var configuration = new ConfigHelper(appSettings.EnvironmentName).Configuration;
 
+            var logConfig = SeriLogHelper.CreateLoggerConfig(configuration, appSettings);
+            logger = SeriLogHelper.GetLogger<Startup>(logConfig);
+
             webBuilder.UseStartup<Startup>();
         });
 
@@ -31,18 +41,19 @@ namespace DNCExamples.Api
         /// </summary>
         /// <param name="args"></param>
         public static void Main(string[] args)
-        {
+        {            
             try
             {
                 CreateHostBuilder(args).Build().Run();
             }
             catch (Exception ex)
             {
+                logger.LogError("DNC:Program:Error {@exception}", ex);
                 throw;
             }
             finally
             {
-             //   Log.CloseAndFlush();
+                Log.CloseAndFlush();
             }
         }
     }

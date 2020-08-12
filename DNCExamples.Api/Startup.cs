@@ -1,17 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using DNCExamples.Api.StartUp;
 using DNCExamples.Common.Config;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace DNCExamples.Api
 {
@@ -47,7 +39,7 @@ namespace DNCExamples.Api
         public void ConfigureServices(IServiceCollection services)
         {
             SwaggerConfig.ServicesConfiguration(services, Settings);
-
+            WebConfig.ServicesConfiguration(services);
             services.AddControllers();
         }
 

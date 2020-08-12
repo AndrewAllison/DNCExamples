@@ -1,4 +1,5 @@
 ﻿using DNCExamples.Api.MiddleWare;
+using DNCExamples.Common.Config;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,6 +29,9 @@ namespace DNCExamples.Api.StartUp
             services.AddHttpContextAccessor();
             services.AddControllers();
             services.AddHttpClient();
+
+            services.AddSingleton<IEnvironmentHelper, EnvironmentHelper>();
+            services.AddSingleton<IAppSettings, AppSettings<Startup>>();
         }
 
         /// <summary>
